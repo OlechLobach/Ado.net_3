@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ado.net_3", "Ado.net_3\Ado.net_3.csproj", "{F96E81B6-4E9B-4165-BE62-FCF37BC6438F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{33B90DB4-1CA3-476A-BF90-F69D24CD5650}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F96E81B6-4E9B-4165-BE62-FCF37BC6438F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F96E81B6-4E9B-4165-BE62-FCF37BC6438F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F96E81B6-4E9B-4165-BE62-FCF37BC6438F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F96E81B6-4E9B-4165-BE62-FCF37BC6438F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33B90DB4-1CA3-476A-BF90-F69D24CD5650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B90DB4-1CA3-476A-BF90-F69D24CD5650}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B90DB4-1CA3-476A-BF90-F69D24CD5650}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B90DB4-1CA3-476A-BF90-F69D24CD5650}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB70F9F2-CD44-4547-9B5A-AA90191D4AC0}
+	EndGlobalSection
+EndGlobal
