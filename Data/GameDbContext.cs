@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using ClassLibrary;
 
-namespace Data
+namespace DataAccess
 {
-    internal class GameDbContext
+    public class GameDbContext : DbContext
     {
+        public DbSet<Game> Games { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=DESKTOP-GNKQNCJ\\SQLEXPRESS;Database=GameLibrary;Integrated Security=True;");
+        }
     }
 }

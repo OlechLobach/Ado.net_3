@@ -1,24 +1,51 @@
-﻿using System.Text;
+﻿using System;
+using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using ClassLibrary;
+using DataAccess;
+using Microsoft.EntityFrameworkCore;
 
-namespace Ado.net_3
+namespace WpfApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private GameDbContext _context;
+
         public MainWindow()
         {
             InitializeComponent();
+            _context = new GameDbContext();
+            _context.Database.EnsureCreated(); // Ensure database and schema are created
+            LoadGames();
+        }
+
+        private void AddGameButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(CopiesSoldTextBox.Text, out int copiesSold))
+            {
+                var game = new Game
+                {
+                    Title = TitleTextBox.Text,
+                    Developer = DeveloperTextBox.Text,
+                    Genre = GenreTextBox.Text,
+                    ReleaseDate = ReleaseDatePicker.SelectedDate ?? DateTime.Now,
+                    GameMode = GameModeTextBox.Text,
+                    CopiesSold = copiesSold
+                };
+
+                _context.Games.Add(game);
+                _context.SaveChanges();
+                LoadGames();
+            }
+            else
+            {
+                MessageBox.Show("Invalid number format for Copies Sold.");
+            }
+        }
+
+        private void LoadGames()
+        {
+            GamesListBox.ItemsSource = _context.Games.ToList();
         }
     }
 }
