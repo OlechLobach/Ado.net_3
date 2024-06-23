@@ -9,7 +9,7 @@ namespace DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=DESKTOP-GNKQNCJ\\SQLEXPRESS;Database=GameLibrary;Integrated Security=True;");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-GNKQNCJ\\SQLEXPRESS;Database=GameLibrary;Integrated Security=True;TrustServerCertificate=True;");
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Windows;
 using ClassLibrary;
 using DataAccess;
@@ -15,31 +14,38 @@ namespace WpfApp
         {
             InitializeComponent();
             _context = new GameDbContext();
-            _context.Database.EnsureCreated(); // Ensure database and schema are created
+            _context.Database.Migrate(); // Apply pending migrations and ensure database is created
             LoadGames();
         }
 
         private void AddGameButton_Click(object sender, RoutedEventArgs e)
         {
-            if (int.TryParse(CopiesSoldTextBox.Text, out int copiesSold))
+            try
             {
-                var game = new Game
+                if (int.TryParse(CopiesSoldTextBox.Text, out int copiesSold))
                 {
-                    Title = TitleTextBox.Text,
-                    Developer = DeveloperTextBox.Text,
-                    Genre = GenreTextBox.Text,
-                    ReleaseDate = ReleaseDatePicker.SelectedDate ?? DateTime.Now,
-                    GameMode = GameModeTextBox.Text,
-                    CopiesSold = copiesSold
-                };
+                    var game = new Game
+                    {
+                        Title = TitleTextBox.Text,
+                        Developer = DeveloperTextBox.Text,
+                        Genre = GenreTextBox.Text,
+                        ReleaseDate = ReleaseDatePicker.SelectedDate ?? DateTime.Now,
+                        GameMode = GameModeTextBox.Text,
+                        CopiesSold = copiesSold
+                    };
 
-                _context.Games.Add(game);
-                _context.SaveChanges();
-                LoadGames();
+                    _context.Games.Add(game);
+                    _context.SaveChanges();
+                    LoadGames();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid number format for Copies Sold.");
+                }
             }
-            else
+            catch (DbUpdateException ex)
             {
-                MessageBox.Show("Invalid number format for Copies Sold.");
+                MessageBox.Show($"Error saving game: {ex.Message}");
             }
         }
 
