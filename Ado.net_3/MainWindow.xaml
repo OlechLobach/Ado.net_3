@@ -1,12 +1,18 @@
-﻿<Window x:Class="Ado.net_3.MainWindow"
+﻿<Window x:Class="FootballLeagueApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Ado.net_3"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Football League App" Height="450" Width="800">
     <Grid>
-
+        <StackPanel>
+            <TextBox x:Name="TeamNameTextBox" Text="Team Name"/>
+            <TextBox x:Name="CityTextBox" Text="City"/>
+            <TextBox x:Name="WinsTextBox" Text="0"/>
+            <TextBox x:Name="LossesTextBox" Text="0"/>
+            <TextBox x:Name="DrawsTextBox" Text="0"/>
+            <TextBox x:Name="GoalsScoredTextBox" Text="0"/>
+            <TextBox x:Name="GoalsConcededTextBox" Text="0"/>
+            <Button Content="Add Team" Click="AddTeamButton_Click"/>
+            <ListBox x:Name="TeamsListBox"/>
+        </StackPanel>
     </Grid>
 </Window>
